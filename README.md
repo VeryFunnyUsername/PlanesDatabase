@@ -1,5 +1,7 @@
 # PlanesDatabase
 Projekt - Tworzenie backendu do aplikacji webowych
+<br>
+Projekt w "dev" oraz "prod" jest identyczny z uwagi, że aplikację napisałem przed założeniem konta na GitHub. Z tego powodu nie jest możliwy wgląd w historię zmian.
 
 ## dependencies:
    * npm
