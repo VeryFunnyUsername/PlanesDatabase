@@ -1,6 +1,6 @@
 # PlanesDatabase
 Projekt - Tworzenie backendu do aplikacji webowych
-
+```
 dependencies:
     npm
     body-parser
@@ -11,6 +11,6 @@ dependencies:
     morgan
     passport
     passport-google-oauth2
-
+```
 
     
