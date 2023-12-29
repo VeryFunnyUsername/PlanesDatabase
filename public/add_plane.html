@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Plane</title>
+</head>
+<body>
+ 
+  <h2>Planes list</h2>
+  <a href="http://localhost:3000/planes">Planes list</a>
+
+  <h2>Plane details by it's Id</h2>
+
+<form id="checksingleplane">
+  <label for="sinlgleid">Id:</label>
+  <input type="text" id="singleId" name="id" required>
+
+  <button type="button" onclick="checkPlaneForm()">Check Plane</button>
+</form>
+
+<script>
+  function checkPlaneForm() {
+    // Pobieranie danych z formularza
+    const planesingleId = document.getElementById('singleId').value;
+
+    const currentUrl = window.location.href;
+    const newUrl = `http://localhost:3000/planes/${planesingleId}`;
+
+    window.location.href = newUrl;
+  }
+</script>
+
+  <h2>Add a New Plane</h2>
+
+  <form id="addplane">
+    <label for="producent">Producent:</label>
+    <input type="text" id="producent" name="producent" required>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" required>
+
+    <label for="rok">Rok:</label>
+    <input type="number" id="rok" name="rok" required>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <script>
+    function submitForm() {
+    // Pobieranie danych z formularza
+      const producent = document.getElementById('producent').value;
+      const model = document.getElementById('model').value;
+      const rok = document.getElementById('rok').value;
+
+      // Tworzenie obiektu danych
+     const data = {
+        producent: producent,
+        model: model,
+        rok: rok
+      };
+     
+      // Tworzenie POST z użyciem fetch
+      fetch('http://localhost:3000/planes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      
+      .then(response => response.json())
+    .then(responseData => {
+      console.log('Response:', responseData);
+    
+      const requestBody = JSON.stringify(data);
+      console.log(requestBody);
+    })
+    
+      .catch(error => console.error('Error:', error));
+    }
+    
+  </script>
+
+<h2>Update a Plane by it's Id</h2>
+
+<form id="updateplanes">
+  <label for="id">Id:</label>
+  <input type="text" id="aId" name="id" required>
+
+  <label for="producent">producent:</label>
+  <input type="text" id="aproducent" name="producent" required>
+
+  <label for="model">Model:</label>
+  <input type="text" id="amodel" name="model" required>
+
+  <label for="rok">Rok:</label>
+  <input type="number" id="arok" name="rok" required>
+
+   <button type="button" onclick="updateForm()">Update</button>
+</form>
+
+<script>
+  function updateForm() {
+    // Pobieranie danych z formularza
+    const aplaneId = document.getElementById('aId').value;
+    const aproducent = document.getElementById('aproducent').value;
+    const amodel = document.getElementById('amodel').value;
+    const arok = document.getElementById('arok').value;
+    // Tworzenie obiektu danych
+    const updatedata = {
+        producent: aproducent,
+        model: amodel,
+        rok: arok
+      };
+    const url = `http://localhost:3000/planes/${aplaneId}`;
+    // Tworzenie POST z użyciem fetch
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedata)
+    })
+    
+    .then(response => response.json())
+  .then(responseData => {
+    console.log('Response:', responseData);
+    
+    const requestBody = JSON.stringify(updatedata);
+    console.log(requestBody);
+  })
+  
+    .catch(error => console.error('Error:', error));
+  }
+  
+</script>
+
+<h2>Delete a Plane</h2>
+
+<form id="deleteplanes">
+  <label for="id">Id:</label>
+  <input type="text" id="Id" name="id" required>
+
+  <button type="button" onclick="deleteForm()">Delete</button>
+</form>
+
+<script>
+  function deleteForm() {
+    // Pobieranie danych z formularza
+    const planeId = document.getElementById('Id').value;
+
+    // Tworzenie obiektu danych
+   const deldata = {
+      planeId: planeId,
+    };
+
+    const url = `http://localhost:3000/planes/${planeId}`;
+    // Wysłanie DELETE używając fetch
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(deldata)
+    })
+    
+    .then(response => response.json())
+  .then(responseData => {
+    console.log('Response:', responseData);
+  
+    const requestBody = JSON.stringify(data);
+    console.log(requestBody);
+  })
+  
+    .catch(error => console.error('Error:', error));
+  }
+  
+</script>
+
+<h2>Logout</h2>
+<a href="http://localhost:3000/logout">Logout</a>
+
+</body>
+</html>
