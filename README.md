@@ -27,7 +27,7 @@ Projekt - Tworzenie backendu do aplikacji webowych
 
 - On the left panel choose `Database Access`, `Add New Database User`, fill user name and password, click `Add Built In role` button with `Read and write to any database access`, `Add User`.
 
-## file .env should look contain constants
+## way that .env file content should look
 
 - DB_USER = "\<mongo db username>\"
 - DB_PASSWORD = "\<mongo db password>\"
